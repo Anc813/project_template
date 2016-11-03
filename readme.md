@@ -1,5 +1,5 @@
 Start new project like this
-`django-admin.py startproject --template=https://github.com/regqueryvalueex/project_template/zipball/master project`
+`django-admin.py startproject --template=https://github.com/Anc813/project_template/zipball/master project`
 
 Rename project to YOUR real projectname.
 Create your local settings in settings directrory.
