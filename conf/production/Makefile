@@ -9,8 +9,8 @@ update:
 	@git stash
 	@git pull
 	@make req
-	python $(MANAGE) collectstatic --noinput
-	python $(MANAGE) migrate
+	DJANGO_SETTINGS_MODULE=$(SETTINGS) python $(MANAGE) collectstatic --noinput
+	DJANGO_SETTINGS_MODULE=$(SETTINGS) python $(MANAGE) migrate
 	touch reload_project
 
 reload:
