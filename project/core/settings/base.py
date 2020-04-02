@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'pipeline',
     # 'rest_framework',
 )
 
@@ -109,7 +108,7 @@ DATABASES = {
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
+# https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -123,7 +122,7 @@ USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+# https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_root')
@@ -146,35 +145,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    # 'pipeline.finders.PipelineFinder',
 )
-
-# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
-# PIPELINE_CSS_COMPRESSOR = None
-# PIPELINE_JS_COMPRESSOR = None
-
-# PIPELINE_COMPILERS = (
-#     'pipeline.compilers.less.LessCompiler',
-#     'pipeline.compilers.coffee.CoffeeScriptCompiler',
-# )
-
-# PIPELINE_CSS = {
-#     'styles': {
-#         'source_filenames': (
-#         ),
-#         'output_filename': '',
-#     },
-# }
-
-# PIPELINE_JS = {
-#     'scripts': {
-#         'source_filenames': (
-#         ),
-#         'output_filename': '',
-#     }
-# }
-
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
