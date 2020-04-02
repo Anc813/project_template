@@ -1,6 +1,6 @@
 upstream django-project {
     #server 127.0.0.1:8002;
-    server unix:///path/to/project-root/uwsgi.sock; # for a file socket
+    server unix://PROJECT_ROOT_REPLACE/uwsgi.sock; # for a file socket
 }
 
 server {
@@ -10,12 +10,12 @@ server {
         charset utf-8;
 
         location /static {
-            alias /path/to/project-root/static_root/;
+            alias PROJECT_ROOT_REPLACE/static_root/;
             add_header Access-Control-Allow-Origin *;
         }
 
         location /media {
-            alias /path/to/project-root/media_root/;
+            alias PROJECT_ROOT_REPLACE/media_root/;
         }
 
         location / {
@@ -23,6 +23,6 @@ server {
           include uwsgi_params;
         }
 
-        access_log /path/to/project-root/logs/nginx_access.log;
-        error_log /path/to/project-root/logs/nginx_error.log;
+        access_log PROJECT_ROOT_REPLACE/logs/nginx_access.log;
+        error_log PROJECT_ROOT_REPLACE/logs/nginx_error.log;
 }

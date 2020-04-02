@@ -102,9 +102,8 @@ DATABASES = {
 #         'PORT': 5432
 #     }
 # }
-# # CREATE DATABASE project_db;
 # # CREATE USER project_usr with password 'project_db_password';
-# # GRANT ALL PRIVILEGES ON DATABASE project_db to project_usr;
+# # CREATE DATABASE project_db OWNER project_usr;
 #
 # ## POSTGRESQL ###
 
