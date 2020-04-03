@@ -27,3 +27,16 @@ print ("SECRET_KEY = '%s'" % get_random_string(length=75, allowed_chars=''.join(
 or just generate it online (if You are using python 3):
 
 [django-secret-key-generator](http://www.miniwebtool.com/django-secret-key-generator/)
+
+
+Replace
+/path/to/project-root
+/var/www/my-site
+
+Then replace
+/root/.virtualenvs/project_env
+/home/.virtualenvs/site_env
+
+Then replace
+project
+site
