@@ -6,8 +6,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db import models
 from django.utils import timezone
 from django.utils.crypto import get_random_string
-
-from core.helper import send_email
+from django.core.mail import send_mail
 
 __all__ = ['User', 'AuthCode']
 
@@ -40,15 +39,11 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    FORBIDDEN_PERMISSIONS = {'add', 'change', 'delete'}
-
     email = models.EmailField(unique=True, verbose_name='Email')
     # username = models.CharField(max_length=300, null=True, blank=True, verbose_name='Username')
 
     is_active = models.BooleanField(default=False, verbose_name='Active')
     is_admin = models.BooleanField(default=False, verbose_name='Admin')
-
-    is_readonly = models.BooleanField(default=False)
 
     registered = models.DateTimeField(auto_now_add=True, verbose_name='Registered')
 
@@ -72,15 +67,7 @@ class User(AbstractBaseUser):
         return self.email
 
     def has_perm(self, perm, obj=None):
-        if not self.is_readonly:
-            return True
-
-        try:
-            app, rest = perm.split('.')
-            permission, model_name = rest.split('_', 1)
-            return permission not in self.FORBIDDEN_PERMISSIONS
-        except IndexError:
-            return True
+        return True
 
     def has_module_perms(self, app_label):
         return True
@@ -92,6 +79,10 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        """Send an email to this user."""
+        send_mail(subject, message, from_email, [self.email], **kwargs)
 
     class Meta:
         verbose_name = 'User'

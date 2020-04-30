@@ -23,6 +23,11 @@ server {
           include uwsgi_params;
         }
 
+        gzip on;
+        gzip_comp_level 5
+        gzip_disable "msie6";
+        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
         access_log PROJECT_ROOT_REPLACE/logs/nginx_access.log;
         error_log PROJECT_ROOT_REPLACE/logs/nginx_error.log;
 }
