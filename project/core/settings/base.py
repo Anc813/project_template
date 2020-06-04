@@ -107,6 +107,7 @@ DATABASES = {
 # }
 # # CREATE USER project_usr with password 'project_db_password';
 # # CREATE DATABASE project_db OWNER project_usr;
+# # ALTER ROLE project_usr WITH CREATEDB;
 #
 # ## POSTGRESQL ###
 
