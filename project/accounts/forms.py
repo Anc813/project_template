@@ -12,7 +12,7 @@ class UserCreationForm(forms.ModelForm):
         model = User
         fields = (
             # 'username',
-            'email'
+            'email',
         )
 
     def clean_password_confirmation(self):

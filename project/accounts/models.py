@@ -8,18 +8,19 @@ from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 
-__all__ = ['User', 'AuthCode']
+__all__ = ['User',]
 
 
 # region User
 class UserManager(BaseUserManager):
-    def create_user(self, email, username=None, password=None):
+    def create_user(self, email, username=None, password=None, **kwargs):
         if not email:
             raise ValueError('User must have Email')
 
         user = self.model(
             username=username,
             email=email,
+            **kwargs
         )
 
         user.set_password(password)
@@ -50,9 +51,9 @@ class User(AbstractBaseUser):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def send_email(self, subj, msg, html_msg=None, desc='manual'):
-        args, kwargs = (subj, msg, [self.email]), {'html_message': html_msg, 'description': desc}
-        send_email(*args, **kwargs)
+    def send_email(self, subj, msg, html_msg=None):
+        args, kwargs = (subj, msg, settings.DEFAULT_FROM_EMAIL, [self.email]), {'html_message': html_msg}
+        send_mail(*args, **kwargs)
 
     objects = UserManager()
 

@@ -4,7 +4,6 @@ ipython
 #django-debug-toolbar
 uwsgi
 psycopg2-binary
-django-choices
 # djangorestframework
 # celery
 # flower
